@@ -3,7 +3,7 @@
 import { Resend } from 'resend';
 
 import { render } from '@react-email/components';
-import AccountCreation from '../../../emails/account-creation';
+import AccountActivation from '../../../emails/account-creation';
 
 type ActionResult = {
   success: boolean;
@@ -23,7 +23,7 @@ export async function sendAccountActEmail(formData: FormData): Promise<ActionRes
   const fromEmail = process.env.RESEND_FROM_EMAIL!;
 
   const plainText = await render(
-    <AccountCreation token={token} email={userEmail} />,
+    <AccountActivation token={token} email={userEmail} />,
     { plainText: true }
     // podemos passar aqui mais opções
   ); 
@@ -32,8 +32,8 @@ export async function sendAccountActEmail(formData: FormData): Promise<ActionRes
     const { data, error } = await resend.emails.send({
       from: fromEmail,
       to: [userEmail], 
-      subject: 'Github Access Token', 
-      react: AccountCreation({
+      subject: 'Ativação de Conta', 
+      react: AccountActivation({
         token: token,
         email: userEmail,
       }),

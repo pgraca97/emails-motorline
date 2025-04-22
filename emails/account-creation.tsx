@@ -24,12 +24,12 @@ const baseUrl = process.env.NODE_ENV === 'production'
   : '';
 
 
-interface AccountCreationProps {
+interface AccountActivationProps {
   token: string;
   email: string;
 }
 
-export const AccountCreation = ({ token, email }: AccountCreationProps) => (
+export const AccountActivation = ({ token, email }: AccountActivationProps) => (
   <Html>
     <Head>
     <style>
@@ -202,16 +202,16 @@ export const AccountCreation = ({ token, email }: AccountCreationProps) => (
   </Html>
 );
 
-export default AccountCreation;
+export default AccountActivation;
 
 export function generateRandomToken(length = 32) {
   return crypto.randomBytes(length).toString('hex');
 }
 
-AccountCreation.PreviewProps = {
+AccountActivation.PreviewProps = {
   token: generateRandomToken(16),
   email: 'paula@example.com',
-} as AccountCreationProps;
+} as AccountActivationProps;
 
 const main = {
   backgroundColor: '#F5F5F5',

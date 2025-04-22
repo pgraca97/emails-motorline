@@ -33,7 +33,7 @@ export async function sendPassRecovEmail(formData: FormData): Promise<ActionResu
     const { data, error } = await resend.emails.send({
       from: fromEmail,
       to: [userEmail], 
-      subject: 'Recuperação de Palavra-Passe', 
+      subject: 'Recuperação de Palavra-Passe!', 
       react: PassRecovery({
         token: token,
         email: userEmail,
